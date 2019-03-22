@@ -34,6 +34,7 @@ $(document).ready(function ($) {
 
   // Events
   $('img').click(function () {
-    console.log($(this))
+    console.log($(this).attr('src'))
+    $(this).toggleClass('special')
   })
 })
