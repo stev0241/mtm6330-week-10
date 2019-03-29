@@ -37,4 +37,30 @@ $(document).ready(function ($) {
     console.log($(this).attr('src'))
     $(this).toggleClass('special')
   })
-})
+
+  $('#content').load('./about.html')
+  $('#contentNav .nav-link').click(function (e) {
+    e.preventDefault()
+    var page = $(this).attr('href')
+    $('#contentNav .active').removeClass('active')
+    $(this).addClass('active')
+    $('#content').fadeOut(500, function () {
+      $(this).load(page)
+    }).fadeIn(500)
+  }) // closing click event
+  $.ajax({
+    url: './data/posts.json',
+    type: 'GET',
+    dataType: 'json'
+  }).done(function (data) {
+    var numPosts = data.posts.length
+    for (var i = 0; i < numPosts; i++) {
+      var post = '<div class="col-sm-6 p-5"><h3>'
+      post += (i + 1) + '.' + data.posts[i].title
+      post += '</h3><p>'
+      post += data.posts[i].body
+      post += '</p></div>'
+      $('#posts').append(post)
+    }
+  })
+}) // closing ready method and the function
