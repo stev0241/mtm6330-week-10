@@ -37,7 +37,7 @@ $(document).ready(function ($) {
     console.log($(this).attr('src'))
     $(this).toggleClass('special')
   })
-
+  // AJAX
   $('#content').load('./about.html')
   $('#contentNav .nav-link').click(function (e) {
     e.preventDefault()

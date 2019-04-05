@@ -1,4 +1,5 @@
-{
+/* object{} array [] */
+  {
   "posts":[
     {
       "id": 1,
